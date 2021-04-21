@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'input',
+    loadChildren: () => import('./input-message/input-message.module').then( m => m.InputMessagePageModule)
+  },
+  {
     path: 'message/:id',
     loadChildren: () => import('./view-message/view-message.module').then( m => m.ViewMessagePageModule)
   },
@@ -14,6 +18,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'input-message',
+    loadChildren: () => import('./input-message/input-message.module').then( m => m.InputMessagePageModule)
   },
 ];
 

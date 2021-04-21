@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-item>
+      <ion-buttons>
+        <ion-back-button [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        Ingrese datos del clima
+      </ion-title>
+    </ion-item>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Ingrese datos del clima
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="datosForm"
+        (ngSubmit)="ingresarDatos(datosForm.value)">
+        <ion-item>
+          <ion-label position="floating">Nombre de reporter@</ion-label>
+          <ion-input formControlName="reportero" placeholder="Ej. Jared Dunn"></ion-input>
+        </ion-item>
+        <div class="errors">
+          <ng-container *ngFor="let validation of mensajesValidacion.datos">
+            <div *ngIf="
+            datosForm.get('reportero').hasError(validation.type) &&
+            (datosForm.get('reportero').dirty || datosForm.get('reportero').touched)
+            ">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Ciudad</ion-label>
+          <ion-input formControlName="ciudad" placeholder="Ej. Saltillo"></ion-input>
+        </ion-item>
+        <div class="errors">
+          <ng-container *ngFor="let validation of mensajesValidacion.datos">
+            <div *ngIf="
+            datosForm.get('ciudad').hasError(validation.type) &&
+            (datosForm.get('ciudad').dirty || datosForm.get('ciudad').touched)
+            ">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Temperatura en °C</ion-label>
+          <ion-input formControlName="temperatura" type="number" placeholder="20"></ion-input>
+        </ion-item>
+        <div class="errors">
+          <ng-container *ngFor="let validation of mensajesValidacion.datos">
+            <div *ngIf="
+            datosForm.get('temperatura').hasError(validation.type) &&
+            (datosForm.get('temperatura').dirty || datosForm.get('temperatura').touched)
+            ">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <ion-button expand="block" [disabled]="!datosForm.valid" type="submit">Ingresar</ion-button>
+  </form>
+
+</ion-content>
