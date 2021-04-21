@@ -1,0 +1,7 @@
+{
+  "name": "formulariosYEstilos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
